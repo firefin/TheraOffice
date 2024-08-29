@@ -10,6 +10,7 @@ namespace ProgramAssign1
             List<Physician> physicians = new List<Physician>();
 
 
+            // TODO: Implement a menu to add physician, patient, add appointment to physician, and view (& edit?) patient
             Patient p = new Patient();
             Console.WriteLine("Enter Patient Info:");
             
@@ -29,9 +30,14 @@ namespace ProgramAssign1
             Console.Write("Gender: ");
             p.Gender = Console.ReadLine();
 
-            Console.Write("Date of Birth (MM-DD-YYYY): ");
+            Console.Write("Date of Birth (MM-dd-yyyy): ");
             p.Birthdate = DateTime.ParseExact(Console.ReadLine(), "MM-dd-yyyy", CultureInfo.InvariantCulture);//doesn't check for invalid input
 
+            MedicalNote note = new MedicalNote("Sample diagnosis", "Sample prescription");
+            p.AddNote(note);
+
+            MedicalNote note2 = new MedicalNote("2nd sample diagnosis", "None");
+            p.AddNote(note2);
 
             Console.WriteLine(p);
 
@@ -58,8 +64,26 @@ namespace ProgramAssign1
 
         //ToString overload
         public override string ToString()
+        {//Might need to change MedicalNotes since I doubt it'll properly print. Might need to append w/ loop
+            string text = $"-*-*-*-*- PATIENT INFO -*-*-*-*-\n" +
+                $"Name: {Name}\n" +
+                $"Age: {Age}\n" +
+                $"Birthdate: {Birthdate}\n" +
+                $"Address: {Address}\n" +
+                $"Race: {Race}\n" +
+                $"Gender:{Gender}\n" +
+                $"Medical Notes:\n";
+                foreach( MedicalNote note in MedicalNotes)
+                {
+                text += $"\t{note.ToString()}\n";
+                }
+                text+="-*-*-*-*--*-*-*-*--*-*-*-*--*-*-";//missing others
+            return text;
+        }
+
+        public void AddNote(MedicalNote note)
         {
-            return $"Name: {Name}\nAge: {Age}";//missing others
+            MedicalNotes.Add(note);
         }
 
     }
@@ -78,13 +102,18 @@ namespace ProgramAssign1
 
     public class MedicalNote 
     { 
-        public required string Diagnosis { get; set; }
+        public string Diagnosis { get; set; }
         public string? Prescription { get; set; }
 
         public MedicalNote(string diagnosis, string? prescription)
         {
             Diagnosis = diagnosis;
             Prescription = prescription;
+        }
+
+        public override string ToString()
+        {
+            return $"Diagnosis: {Diagnosis}\n\tPrescription: {Prescription}.";
         }
     }
 
