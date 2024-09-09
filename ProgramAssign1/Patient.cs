@@ -14,13 +14,13 @@ namespace ProgramAssign1
         public string Gender { get; set; }
         public DateTime Birthdate { get; set; }
         public int Age { get; set; }
-        public Guid id { get; private set; }
+        public string id { get; private set; }
         public List<MedicalNote> MedicalNotes { get; set; } = new List<MedicalNote>();
 
         //Logic missing 
         public Patient()
         {
-            id = Guid.NewGuid();
+            id = Guid.NewGuid().ToString("N").Substring(0, 5);//I dont wanna type a 32-char string. Dumb? Probably.
         }
 
         //ToString overload
@@ -36,9 +36,9 @@ namespace ProgramAssign1
                 $"Medical Notes:\n";
             foreach (MedicalNote note in MedicalNotes)
             {
-                text += $"\t{note.ToString()}\n";
+                text += $"\t{note}\n";
             }
-            text += "-*-*-*-*--*-*-*-*--*-*-*-*--*-*-";//missing others
+            text += "-*-*-*-*--*-*-*-*--*-*-*-*--*-*-\n";//missing others
             return text;
         }
     }
