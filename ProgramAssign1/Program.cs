@@ -19,6 +19,7 @@ namespace ProgramAssign1
                 Console.WriteLine("[A] Add Appointment");
                 Console.WriteLine("[D] Add Doctor");
                 Console.WriteLine("[L] List Items");
+                Console.WriteLine("[N] Add Note to Patient");
                 Console.WriteLine("[Q] Quit Program");
                 Console.WriteLine("#####################");
                 Console.WriteLine("Select an option: ");
@@ -139,7 +140,7 @@ namespace ProgramAssign1
                                 {
                                     Console.WriteLine("Enter the desired appointment date and time (MM-dd-yyyy HH:mm) *Time is 24-hour format*:");
                                     string timeInput = Console.ReadLine();
-                                    dateTimeParsed = DateTime.TryParseExact(timeInput, "MM-dd-yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out selectedDateTime);
+                                    dateTimeParsed = DateTime.TryParseExact(timeInput, "MM-dd-yyyy HH:mm", null, DateTimeStyles.None, out selectedDateTime);
                                     if (!dateTimeParsed)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -220,7 +221,7 @@ namespace ProgramAssign1
                                 {
                                     Console.WriteLine("Specialization: ");
                                     special = Console.ReadLine();
-                                    if (special.ToLower()!= "done")//prevents "done" as  being added as a specialization                          
+                                    if (special.ToLower()!= "done")//prevents "done" as being added as a specialization                          
                                         tempPhysician.Specializations.Add(special);
                                 }
                                 while (special.ToLower() != "done");
@@ -263,6 +264,42 @@ namespace ProgramAssign1
                                 break;
                         }
 
+                        break;
+                    case 'n':
+                        if (patients.Count < 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("You need at least 1 patient in order to add a note.");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            foreach (Patient p in patients)
+                            {
+                                Console.WriteLine($"{p.id} - {p.Name}");
+                            }
+                            
+                            Patient notePatient = null;
+                            string patientID;
+
+                            while (notePatient == null)
+                            {
+                                Console.WriteLine("Select patient using their ID: ");
+                                patientID = Console.ReadLine();
+                                notePatient = patients.Find(x => x.id == patientID);
+                                if (notePatient == null)
+                                    Console.WriteLine("Patient not foud.");
+                            }
+                            Console.WriteLine("Enter the Diagnosis: ");
+                            string diagnosis = Console.ReadLine();
+                            Console.WriteLine("Enter a prescription. If none, type \"None.\"");
+                            string? prescription = Console.ReadLine();
+                            notePatient.MedicalNotes.Add(new MedicalNote(diagnosis, prescription));
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Successfully added note.");
+                            Console.ResetColor();
+                        }
                         break;
                     case '|'://just adds a blank patient & physician for ease of debugging.
                         patients.Add(new Patient());
