@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramAssign1
+namespace Library.Models
 {
     public class Physician
     {
@@ -18,7 +18,11 @@ namespace ProgramAssign1
 
         public Physician() 
         {
-            id = Guid.NewGuid().ToString("N").Substring(0,5);//I dont wanna type a 32-char string. Dumb? Probably.
+            Name = string.Empty;
+            LicenseNumber = string.Empty;
+            GraduationDate = DateTime.MinValue;
+            Specializations = new List<string>();
+            Appointments = new List<Appointment>();
         }
 
         public override string ToString()

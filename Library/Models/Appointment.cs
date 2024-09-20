@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramAssign1
+namespace Library.Models
 {
     public class Appointment
     {
@@ -23,7 +23,7 @@ namespace ProgramAssign1
         }
         public override string ToString() 
         {
-            return $"Patient: {Patient.Name} ({Patient.id}) | Date: {Date}"; 
+            return $"Patient: {Patient.Name} ({Patient.Id}) | Date: {Date}"; 
         }
     }
 }
