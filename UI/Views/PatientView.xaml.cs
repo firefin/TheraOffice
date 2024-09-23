@@ -2,7 +2,7 @@ using Library.Models;
 using Library.Services;
 
 namespace UI.Views;
-
+[QueryProperty(nameof(PatientId), "patientId")]
 public partial class PatientView : ContentPage
 {
 	public PatientView()
@@ -17,7 +17,7 @@ public partial class PatientView : ContentPage
 
     private void Confirm_Clicked(object sender, EventArgs e)
     {
-		Patient? p = BindingContext as Patient;
+		var p = BindingContext as Patient;
 		if(p != null) 
 			PatientServiceProxy.Current.AddOrUpdatePatient(p);
 

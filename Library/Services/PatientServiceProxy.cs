@@ -29,7 +29,11 @@ namespace Library.Services
         {
             instance = null;
 
-            Patients = new List<Patient>();
+            Patients = new List<Patient>
+            {
+                new Patient{Name = "Test Patient", Id = 1},
+                new Patient{Name = "Other Test Patient", Id = 2}
+            };
         }
 
         public int LastKey
@@ -55,14 +59,11 @@ namespace Library.Services
         }
         public void AddOrUpdatePatient(Patient p)
         {
-            bool add = false;
-            if(p.Id <= 0)
+            if (p.Id <= 0)
             {
                 p.Id = LastKey + 1;
-                add = true;
-            }
-            if(add)
                 Patients.Add(p);
+            }
         }
 
         public void RemovePatient(int id) 

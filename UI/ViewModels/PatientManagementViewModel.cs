@@ -20,18 +20,16 @@ namespace UI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Patient? SelectedPatient { get; set; }
+        public PatientViewModel? SelectedPatient { get; set; }
 
-        public ObservableCollection<Patient> PatientsObservableCollection
+        public ObservableCollection<PatientViewModel> PatientsObservableCollection
         {
-            get
-            {
-                return new ObservableCollection<Patient>(PatientServiceProxy.Current.Patients);
-            }
+            get => new ObservableCollection<PatientViewModel>(PatientServiceProxy.Current.Patients.Where( p => p != null).Select( p => new PatientViewModel(p)));
         }
         public void DeletePatient()
         {
             if (SelectedPatient == null) return;
+
             PatientServiceProxy.Current.RemovePatient(SelectedPatient.Id);
         }
         public void Refresh()

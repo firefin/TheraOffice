@@ -43,10 +43,10 @@
 
             <Label Grid.Row="3" Grid.Column="0" Text="Gender:"/>
             <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Gender}"/>
-
+     <!--Maybe remove birthdate? Cuz since it's DateTime, it might just not work-->
             <Label Grid.Row="4" Grid.Column="0" Text="Birthdate:"/>
             <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Birthdate}"/>
-            
+
 
         </Grid>
         <Button Text="Confirm" Clicked="Confirm_Clicked"/>

@@ -31,7 +31,12 @@ namespace Library.Models
         //ToString overload
         public override string ToString()
         {
-            return $"[ {Id} ] {Name}";
+            return Display;
+        }
+
+        public string Display
+        {
+            get { return Name; }
         }
     }
     public class MedicalNote

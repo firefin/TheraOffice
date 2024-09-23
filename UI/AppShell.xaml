@@ -17,6 +17,10 @@
         ContentTemplate="{DataTemplate views:PatientManagement}"
         Route="PatientManagement"/>
     <ShellContent
+        Title="Patient View"
+        ContentTemplate="{DataTemplate views:PatientView}"
+        Route="PatientView"/>
+    <ShellContent
         Title="Physician Management"
         ContentTemplate="{DataTemplate views:PhysicianManagement}"
         Route="PhysicianManagement"/>
@@ -24,8 +28,4 @@
         Title="Appointment Management"
         ContentTemplate="{DataTemplate views:AppointmentManagement}"
         Route="AppointmentManagement"/>
-    <ShellContent
-        Title="Patient View"
-        ContentTemplate="{DataTemplate views:PatientView}"
-        Route="PatientView"/>
 </Shell>
