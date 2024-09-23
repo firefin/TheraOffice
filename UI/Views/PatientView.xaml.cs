@@ -28,14 +28,9 @@ public partial class PatientView : ContentPage
     {
         //TODO: this really needs to be in a view model
         if (PatientId > 0)
-        {
-            BindingContext = PatientServiceProxy.Current
-                .Patients.FirstOrDefault(p => p.Id == PatientId);
-        }
+            BindingContext = PatientServiceProxy.Current.Patients.FirstOrDefault(p => p.Id == PatientId);
         else
-        {
             BindingContext = new Patient();
-        }
 
     }
 }

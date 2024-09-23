@@ -10,4 +10,8 @@ public partial class PhysicianManagement : ContentPage
 	{
 		Shell.Current.GoToAsync("//Home");
 	}
+	private void AddPhysician_Clicked(object sender, EventArgs e)
+	{
+
+	}
 }

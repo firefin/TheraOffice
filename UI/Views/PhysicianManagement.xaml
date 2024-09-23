@@ -4,6 +4,16 @@
              x:Class="UI.Views.PhysicianManagement"
              Title="Physician Management">
     <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        
+        <Button Grid.Row="1" Text="Add Physician" Clicked="AddPhysician_Clicked"/>
         <Button Grid.Row="3" Text="Exit" Clicked="Exit_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
