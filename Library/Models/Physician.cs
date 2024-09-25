@@ -12,8 +12,8 @@ namespace Library.Models
         public string Name { get; set; }
         public string LicenseNumber { get; set; }
         public DateTime GraduationDate { get; set; }
-        public string id { get; private set; }
-        public List<string>? Specializations { get; set; } = new List<string>();
+        public int Id { get; private set; }
+        public List<string> Specializations { get; set; } = new List<string>();
         public List<Appointment> Appointments { get; set; } = new List<Appointment>();
 
         public Physician() 
