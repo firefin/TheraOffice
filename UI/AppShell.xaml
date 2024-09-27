@@ -12,6 +12,7 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="Home" />
+    
     <ShellContent
         Title="Patient Management"
         ContentTemplate="{DataTemplate views:PatientManagement}"
@@ -20,12 +21,22 @@
         Title="Patient View"
         ContentTemplate="{DataTemplate views:PatientView}"
         Route="PatientView"/>
+    
     <ShellContent
         Title="Physician Management"
         ContentTemplate="{DataTemplate views:PhysicianManagement}"
         Route="PhysicianManagement"/>
     <ShellContent
+        Title="Physician View"
+        ContentTemplate="{DataTemplate views:PhysicianView}"
+        Route="PhysicianView"/>
+    
+    <ShellContent
         Title="Appointment Management"
         ContentTemplate="{DataTemplate views:AppointmentManagement}"
         Route="AppointmentManagement"/>
+    <ShellContent
+        Title="Appointment View"
+        ContentTemplate="{DataTemplate views:AppointmentView}"
+        Route="AppointmentView"/>
 </Shell>

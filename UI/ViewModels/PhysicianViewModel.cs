@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace UI.ViewModels
 {
-    public class PatientViewModel
+    public class PhysicianViewModel
     {
-        private Patient? model { get; set; }
-
+        private Physician? model { get; set; }
         public int Id
         {
             get
             {
-                if(model == null)
+                if (model == null)
                     return -1;
                 return model.Id;
             }
             set
             {
-                if(model != null && model.Id != value)
+                if (model != null && model.Id != value)
                     model.Id = value;
             }
         }
@@ -32,20 +31,19 @@ namespace UI.ViewModels
 
             set
             {
-                if(model != null)
+                if (model != null)
                     model.Name = value;
             }
         }
 
-        public PatientViewModel()
+        public PhysicianViewModel()
         {
-            model = new Patient();
+            model = new Physician();
         }
 
-        public PatientViewModel(Patient? _model)
+        public PhysicianViewModel(Physician? _model)
         {
             model = _model;
         }
-
     }
 }
