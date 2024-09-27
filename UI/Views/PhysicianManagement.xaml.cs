@@ -22,11 +22,11 @@ public partial class PhysicianManagement : ContentPage, INotifyPropertyChanged
 	private void EditPhysician_Clicked(object sender, EventArgs e)
 	{
 		var phyId = (BindingContext as PhysicianManagementViewModel)?.SelectedPhysician?.Id ?? 0;
-		Shell.Current?.GoToAsync($"PhysicianView?physicianId={phyId}");
+		Shell.Current?.GoToAsync($"//PhysicianView?physicianId={phyId}");
 	}
 	private void Delete_Clicked(object sender, EventArgs e)
 	{
-		(BindingContext as PhysicianManagementViewModel)?.Delete();
+		(BindingContext as PhysicianManagementViewModel)?.DeletePhysician();
 	}
 	private void PhysicianManagement_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{

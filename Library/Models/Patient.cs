@@ -36,7 +36,7 @@ namespace Library.Models
 
         public string Display
         {
-            get { return Name; }
+            get => Name;
         }
     }
     public class MedicalNote

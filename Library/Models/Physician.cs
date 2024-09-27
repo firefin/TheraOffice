@@ -27,24 +27,11 @@ namespace Library.Models
 
         public override string ToString()
         {
-            string s = $"~~~~~~~~~~ PHYSICIAN INFO ~~~~~~~~~~" +
-                $"\nName: {Name}" +
-                $"\nLicense Number: {LicenseNumber}" +
-                $"\nGraduation Date: {GraduationDate}" +
-                $"\nSpecializations: ";
-
-            foreach(string special in Specializations)
-            {
-                s += $"{special}\n";
-            }
-            s += $"\nAppointments: ";
-
-            foreach(Appointment appt in Appointments)
-            {
-                s += $"{appt}\n";
-            }
-            s += "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-            return s;
+            return Display;
+        }
+        public string Display 
+        { 
+            get => Name;
         }
     }
 }

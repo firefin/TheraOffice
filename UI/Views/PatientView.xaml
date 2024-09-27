@@ -9,6 +9,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height ="*"/>
@@ -36,8 +39,6 @@
      
             <Label Grid.Row="4" Grid.Column="0" Text="Birthdate:"/>
             <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Birthdate}"/>
-
-
         </Grid>
         <Button Text="Confirm" Clicked="Confirm_Clicked"/>
         <Button Text="Exit" Clicked="Exit_Clicked"/>

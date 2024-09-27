@@ -26,7 +26,7 @@ namespace UI.ViewModels
             get => new ObservableCollection<PhysicianViewModel>(PhysicianServiceProxy.Current.Physicians.Where(p => p != null).Select(p => new PhysicianViewModel(p)));
         }
 
-        public void Delete()
+        public void DeletePhysician()
         {
             if(SelectedPhysician == null) return;
 
