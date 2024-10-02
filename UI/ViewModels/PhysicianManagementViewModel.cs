@@ -31,6 +31,7 @@ namespace UI.ViewModels
             if(SelectedPhysician == null) return;
 
             PhysicianServiceProxy.Current.RemovePhysician(SelectedPhysician.Id);
+            Refresh();
         }
         public void Refresh()
         {
