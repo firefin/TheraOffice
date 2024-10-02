@@ -31,6 +31,7 @@ namespace UI.ViewModels
             if (SelectedPatient == null) return;
 
             PatientServiceProxy.Current.RemovePatient(SelectedPatient.Id);
+            Refresh();
         }
         public void Refresh()
         {
