@@ -10,12 +10,14 @@ namespace Library.Models
     {
         public DateTime Date { get; set; }
         public Patient Patient { get; set; }
-
-
-        public Appointment(DateTime date, Patient patient)
+        public Physician Physician { get; set; } //might need to remove/refactor this depending on how implementing appointments needs to be done.
+        public int Id { get; set; }
+  
+        public Appointment(DateTime date, Patient patient, Physician physician)
         {
             Date = date;
             Patient = patient;
+            Physician = physician;
         }
         public void MakeAppointment(int year, int month, int day, int hour, int minute)
         {
@@ -23,7 +25,12 @@ namespace Library.Models
         }
         public override string ToString() 
         {
-            return $"Patient: {Patient.Name} ({Patient.Id}) | Date: {Date}"; 
+            return Display;
+        }
+
+        private string Display
+        {
+            get => Date.ToString(); //for now, just returns the date as a string object.
         }
     }
 }
