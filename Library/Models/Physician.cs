@@ -27,11 +27,7 @@ namespace Library.Models
 
         public override string ToString()
         {
-            return Display;
-        }
-        public string Display 
-        { 
-            get => Name;
+            return Name;
         }
     }
 }

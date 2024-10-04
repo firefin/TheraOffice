@@ -12,7 +12,9 @@ namespace Library.Models
         public Patient Patient { get; set; }
         public Physician Physician { get; set; } //might need to remove/refactor this depending on how implementing appointments needs to be done.
         public int Id { get; set; }
-  
+        
+
+        public Appointment() { }
         public Appointment(DateTime date, Patient patient, Physician physician)
         {
             Date = date;
@@ -25,12 +27,7 @@ namespace Library.Models
         }
         public override string ToString() 
         {
-            return Display;
-        }
-
-        private string Display
-        {
-            get => Date.ToString(); //for now, just returns the date as a string object.
+            return Date.ToString();
         }
     }
 }
