@@ -12,6 +12,9 @@ namespace Library.Models
         public Patient Patient { get; set; }
         public Physician Physician { get; set; } //might need to remove/refactor this depending on how implementing appointments needs to be done.
         public int Id { get; set; }
+
+        public string PatientName { get => Patient.Name; }
+        public string PhysicianName { get => Physician.Name; }
         
 
         public Appointment() { }
