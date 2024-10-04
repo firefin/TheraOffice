@@ -4,9 +4,36 @@
              x:Class="UI.Views.AppointmentView"
              Title="AppointmentView">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Date and Time:"/>
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Date}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Patient:"/>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding }"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Physician:"/>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Race}"/>
+        </Grid>
+        <Button Text="Confirm" Clicked="Confirm_Clicked"/>
+        <Button Text="Exit" Clicked="Exit_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
