@@ -73,5 +73,14 @@ namespace Library.Services
             if (removePatient != null)
                 Appointments.Remove(removePatient);
         }
+
+        public void AddOrUpdate(Appointment a)
+        {
+            if (a.Id <= 0)
+            {
+                a.Id = LastKey + 1;
+                Appointments.Add(a);
+            }
+        }
     }
 }

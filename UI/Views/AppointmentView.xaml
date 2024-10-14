@@ -6,11 +6,11 @@
     <VerticalStackLayout>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/> <!-- Labels -->
+                <ColumnDefinition Width="2*"/> <!-- Inputs -->
+                <ColumnDefinition Width="*"/> <!-- Time picker-->
+                <ColumnDefinition Width="0.5*"/> <!-- Padding-->
+                
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height ="*"/>
@@ -25,13 +25,15 @@
                 <RowDefinition Height ="*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Text="Date and Time:"/>
-            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Date}"/>
+            <DatePicker Grid.Row="0" Grid.Column="1" MinimumDate ="{Binding MinDate}"  Date="{Binding Date}"/>
+            <TimePicker Grid.Row="0" Grid.Column="2" Time="{Binding Time}"/>
 
             <Label Grid.Row="1" Grid.Column="0" Text="Patient:"/>
-            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding }"/>
+            <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}"/>
+            
 
             <Label Grid.Row="2" Grid.Column="0" Text="Physician:"/>
-            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Race}"/>
+            <Picker Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Physicians}" SelectedItem="{Binding SelectedPhysician}"/>
         </Grid>
         <Button Text="Confirm" Clicked="Confirm_Clicked"/>
         <Button Text="Exit" Clicked="Exit_Clicked"/>

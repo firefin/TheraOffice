@@ -26,7 +26,7 @@ public partial class PatientView : ContentPage
 
     private void PatientView_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        //TODO: this really needs to be in a view model
+        //TODO: this really needs to be in a view Model
         if (PatientId > 0)
             BindingContext = PatientServiceProxy.Current.Patients.FirstOrDefault(p => p.Id == PatientId);
         else

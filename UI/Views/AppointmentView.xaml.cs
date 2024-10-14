@@ -1,3 +1,5 @@
+using UI.ViewModels;
+
 namespace UI.Views;
 
 public partial class AppointmentView : ContentPage
@@ -5,10 +7,12 @@ public partial class AppointmentView : ContentPage
 	public AppointmentView()
 	{
 		InitializeComponent();
+		BindingContext = new AppointmentViewModel();
 	}
 	private void Confirm_Clicked(object sender, EventArgs e)
 	{
-
+		(BindingContext as AppointmentViewModel)?.AddOrUpdate();
+		Shell.Current.GoToAsync("//AppointmentManagement");
 	}
     private void Exit_Clicked(object sender, EventArgs e)
     {
