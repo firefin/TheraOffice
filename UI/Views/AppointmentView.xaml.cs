@@ -18,4 +18,9 @@ public partial class AppointmentView : ContentPage
     {
 		Shell.Current.GoToAsync("//AppointmentManagement");
     }
+
+    private void AppointmentView_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+		(BindingContext as AppointmentViewModel)?.Refresh();
+    }
 }

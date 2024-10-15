@@ -3,14 +3,23 @@ using Library.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UI.ViewModels
 {
-    public class AppointmentViewModel
+    public class AppointmentViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public Appointment? Model { get; set; }
 
         public ObservableCollection<Patient> Patients 
@@ -76,17 +85,6 @@ namespace UI.ViewModels
             }
         }
 
-        /*
-        public string PatientName
-        {
-            get => Model?.Patient.Name ?? string.Empty;
-        }
-        public string PhysicianName
-        {
-            get => Model?.Physician.Name ?? string.Empty;
-        }
-        */
-
         public AppointmentViewModel() 
         {
             Model = new Appointment();
@@ -103,6 +101,12 @@ namespace UI.ViewModels
             {
                 AppointmentServiceProxy.Current.AddOrUpdate(Model);
             }
+        }
+        public void Refresh()
+        {
+            //refresh the Patients & Physician list in thingy
+            NotifyPropertyChanged(nameof(Patients));
+            NotifyPropertyChanged(nameof(Physicians));
         }
     }
 }
