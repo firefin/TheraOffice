@@ -16,12 +16,12 @@ public partial class AppointmentManagement : ContentPage
     }
     private void CreateNewAppointment_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//AppointmentView?appointment=0");
+        Shell.Current.GoToAsync("//AppointmentView?appointmentId=0");
     }
     private void EditAppointment_Clicked(object sender, EventArgs e)
     {
         var apptId = (BindingContext as AppointmentManagementViewModel)?.SelectedAppointment?.Id ?? 0;
-        Shell.Current.GoToAsync($"//AppointmentView?appointment={apptId}");
+        Shell.Current.GoToAsync($"//AppointmentView?appointmentId={apptId}");
     }
     private void DeleteAppointment_Clicked(object sender, EventArgs e)
     {

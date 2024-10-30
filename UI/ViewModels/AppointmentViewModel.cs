@@ -22,8 +22,8 @@ namespace UI.ViewModels
 
         public Appointment? Model { get; set; }
 
-        public ObservableCollection<Patient> Patients 
-        { 
+        public ObservableCollection<Patient> Patients
+        {
             get => new ObservableCollection<Patient>(PatientServiceProxy.Current.Patients);
         }
 
@@ -53,6 +53,9 @@ namespace UI.ViewModels
             }
         }
 
+        /*
+         * deep copy on appointment (using new keyword) 
+         */
 
         public DateTime MinDate
         {
@@ -69,6 +72,7 @@ namespace UI.ViewModels
             }
         }
 
+        public TimeSpan ScheduledTime { get; set; }
 
         public int Id
         {
@@ -80,12 +84,12 @@ namespace UI.ViewModels
             }
             set
             {
-                if(Model != null && Model.Id != value)
+                if (Model != null && Model.Id != value)
                     Model.Id = value;
             }
         }
 
-        public AppointmentViewModel() 
+        public AppointmentViewModel()
         {
             Model = new Appointment();
         }
@@ -97,16 +101,30 @@ namespace UI.ViewModels
 
         public void AddOrUpdate()
         {
-            if(Model!= null)
+            if (Model != null)
             {
                 AppointmentServiceProxy.Current.AddOrUpdate(Model);
             }
         }
+
         public void Refresh()
         {
             //refresh the Patients & Physician list in thingy
             NotifyPropertyChanged(nameof(Patients));
             NotifyPropertyChanged(nameof(Physicians));
+        }
+
+        public void RefreshTime()
+        {
+            if (Model != null)
+            {
+                if (Model.Date != null)
+                {
+                    Model.Date = Date;
+                    //https://github.com/crmillsfsu/ClinicManagement/blob/master/App.Clinic/ViewModels/AppointmentViewModel.cs#L74
+                    Model.Date = Model.Date.Add(ScheduledTime);
+                }
+            }
         }
     }
 }

@@ -11,11 +11,7 @@ namespace Library.Models
         public DateTime Date { get; set; }
         public Patient Patient { get; set; }
         public Physician Physician { get; set; } //might need to remove/refactor this depending on how implementing appointments needs to be done.
-        public int Id { get; set; }
-
-        public string PatientName { get => Patient.Name; }
-        public string PhysicianName { get => Physician.Name; }
-        
+        public int Id { get; set; }   
 
         public Appointment() { }
         public Appointment(DateTime date, Patient patient, Physician physician)
@@ -31,6 +27,14 @@ namespace Library.Models
         public override string ToString() 
         {
             return Date.ToString();
+        }
+
+        //Deep copy constructor to fix issue #11
+        public Appointment(Appointment app)
+        {
+            Date = app.Date;
+            Patient = app.Patient;
+            Physician = app.Physician;
         }
     }
 }

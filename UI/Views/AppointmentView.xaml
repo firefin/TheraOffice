@@ -27,7 +27,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Text="Date and Time:"/>
             <DatePicker Grid.Row="0" Grid.Column="1" MinimumDate ="{Binding MinDate}"  Date="{Binding Date}"/>
-            <TimePicker Grid.Row="0" Grid.Column="2" Time="{Binding Time}"/>
+            <TimePicker Grid.Row="0" Grid.Column="2" Time="{Binding ScheduledTime}" PropertyChanged="TimePicker_PropertyChanged"/>
 
             <Label Grid.Row="1" Grid.Column="0" Text="Patient:"/>
             <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}"/>
