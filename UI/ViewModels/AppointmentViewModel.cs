@@ -120,7 +120,7 @@ namespace UI.ViewModels
             {
                 if (Model.Date != null)
                 {
-                    Model.Date = Date;
+                    Model.Date = Date.Date;
                     //https://github.com/crmillsfsu/ClinicManagement/blob/master/App.Clinic/ViewModels/AppointmentViewModel.cs#L74
                     Model.Date = Model.Date.Add(ScheduledTime);
                 }
