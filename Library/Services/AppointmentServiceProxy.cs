@@ -31,9 +31,9 @@ namespace Library.Services
 
             Appointments = new List<Appointment>
             {
-                new Appointment{Date = DateTime.Now.Date, Time = TimeSpan.Zero, Patient = new Patient{Name = "appt test patient"}, Physician = new Physician{Name = "appt test dr." }, Id = 1 },
+                new Appointment{Date = DateTime.Now.Date, /*Time = TimeSpan.Zero,*/ Patient = new Patient{Name = "appt test patient"}, Physician = new Physician{Name = "appt test dr." }, Id = 1 },
 
-                new Appointment{Date = DateTime.Now.Date, Time = TimeSpan.Zero, Patient = new Patient{Name = "appt test patient 2"}, Physician = new Physician{Name = "appt test dr. 2" }, Id = 2 }
+                new Appointment{Date = DateTime.Now.Date, /*Time = TimeSpan.Zero,*/ Patient = new Patient{Name = "appt test patient 2"}, Physician = new Physician{Name = "appt test dr. 2" }, Id = 2 }
             };
         }
 

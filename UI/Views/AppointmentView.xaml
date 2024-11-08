@@ -38,5 +38,6 @@
         </Grid>
         <Button Text="Confirm" Clicked="Confirm_Clicked"/>
         <Button Text="Exit" Clicked="Exit_Clicked"/>
+        <Label Text="error label" BindingContext="SchedulingErrorMessage" x:Name="errorLabel"/>
     </VerticalStackLayout>
 </ContentPage>

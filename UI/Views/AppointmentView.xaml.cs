@@ -18,8 +18,11 @@ public partial class AppointmentView : ContentPage
 	}
 	private void Confirm_Clicked(object sender, EventArgs e)
 	{
-        (BindingContext as AppointmentViewModel)?.AddOrUpdate();
-		Shell.Current.GoToAsync("//AppointmentManagement");
+
+        if((BindingContext as AppointmentViewModel)?.AddOrUpdate() ?? false) //the ?? false bit is slightly problematic cuz it breaks the whole mf thang. but w/e..
+		    Shell.Current.GoToAsync("//AppointmentManagement");
+        else
+            (BindingContext as AppointmentViewModel)?.Refresh();
 	}
     private void Exit_Clicked(object sender, EventArgs e)
     {

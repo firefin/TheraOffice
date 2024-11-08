@@ -9,7 +9,7 @@ namespace Library.Models
     public class Appointment
     {
         public DateTime Date { get; set; }
-        public TimeSpan Time { get; set; }
+        //public TimeSpan Time { get; set; }
         public Patient Patient { get; set; }
         public Physician Physician { get; set; } //might need to remove/refactor this depending on how implementing appointments needs to be done.
         public int Id { get; set; }   
