@@ -14,7 +14,7 @@ public partial class AppointmentView : ContentPage
 	public AppointmentView()
 	{
 		InitializeComponent();
-		BindingContext = new AppointmentViewModel();
+		BindingContext = new AppointmentViewModel(); 
 	}
 	private void Confirm_Clicked(object sender, EventArgs e)
 	{

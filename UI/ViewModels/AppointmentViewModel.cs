@@ -72,7 +72,15 @@ namespace UI.ViewModels
             }
         }
 
-        public TimeSpan ScheduledTime { get; set; }
+        public TimeSpan ScheduledTime
+        {
+            get => Model?.Time ?? TimeSpan.Zero;
+            set
+            {
+                if(Model != null && Model.Time != value)
+                    Model.Time = value;
+            }
+        }
 
         public int Id
         {
@@ -120,8 +128,8 @@ namespace UI.ViewModels
             {
                 if (Model.Date != null)
                 {
-                    Model.Date = Date.Date; //the .Date throws away the time info so it can properly set the time in the following line.
-                    Model.Date = Model.Date.Add(ScheduledTime);
+                    Model.Date = Date.Date;
+                    Model.Time = ScheduledTime;
                 }
             }
         }
