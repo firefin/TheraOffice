@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Views.AppointmentView"
+             Title="AppointmentView"
+             NavigatedTo="AppointmentView_NavigatedTo">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/> <!-- Labels -->
+                <ColumnDefinition Width="2*"/> <!-- Inputs -->
+                <ColumnDefinition Width="*"/> <!-- Time picker-->
+                <ColumnDefinition Width="0.5*"/> <!-- Padding-->
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Date and Time:"/>
+            <DatePicker Grid.Row="0" Grid.Column="1" MinimumDate ="{Binding MinDate}"  Date="{Binding Date}"/>
+            <TimePicker Grid.Row="0" Grid.Column="2" Time="{Binding ScheduledTime}" PropertyChanged="TimePicker_PropertyChanged"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Patient:"/>
+            <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}"/>
+            
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Physician:"/>
+            <Picker Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Physicians}" SelectedItem="{Binding SelectedPhysician}"/>
+        </Grid>
+        <Button Text="Confirm" Clicked="Confirm_Clicked"/>
+        <Button Text="Exit" Clicked="Exit_Clicked"/>
+        <Label Text="error label" BindingContext="SchedulingErrorMessage" x:Name="errorLabel"/>
+    </VerticalStackLayout>
+</ContentPage>

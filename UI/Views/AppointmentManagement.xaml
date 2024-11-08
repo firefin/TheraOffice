@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Views.AppointmentManagement"
+             Title="Appointment Management"
+             NavigatedTo="AppointmentManagement_NavigatedTo">
+    <VerticalStackLayout>
+        <ListView
+            ItemsSource="{Binding AppointmentsObservableCollection}"
+            SelectedItem="{Binding SelectedAppointment}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/> <!-- ID -->
+                                <ColumnDefinition Width="*"/>    <!-- Patient -->
+                                <ColumnDefinition Width="*"/>    <!-- Physician -->
+                                <ColumnDefinition Width="*"/>    <!-- Date -->
+                                <ColumnDefinition Width="*"/>    <!-- Time -->
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Id}"/>
+                            <Label Grid.Column="1" Text="{Binding Model.Patient.Name}"/>
+                            <Label Grid.Column="2" Text="{Binding Model.Physician.Name}"/>
+                            <Label Grid.Column="3" Text="{Binding Model.Date}"/>
+                            <Label Grid.Column="4" Text="{Binding Model.Time}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="0" Text="Create A New Appointment" Clicked="CreateNewAppointment_Clicked"/>
+        <Button Grid.Row="1" Text="Edit an Appointment" Clicked="EditAppointment_Clicked"/>
+        <Button Grid.Row="2" Text="Delete Selected Appointment" Clicked="DeleteAppointment_Clicked"/>
+        <Button Grid.Row="3" Text="Exit" Clicked="Exit_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

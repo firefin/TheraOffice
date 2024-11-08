@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramAssign1
+namespace Library.Models
 {
     public class Patient
     {
@@ -14,32 +14,24 @@ namespace ProgramAssign1
         public string Gender { get; set; }
         public DateTime Birthdate { get; set; }
         public int Age { get; set; }
-        public string id { get; private set; }
+        public int Id { get; set; }
         public List<MedicalNote> MedicalNotes { get; set; } = new List<MedicalNote>();
 
         //Logic missing 
         public Patient()
-        {
-            id = Guid.NewGuid().ToString("N").Substring(0, 5);//I dont wanna type a 32-char string. Dumb? Probably.
+        { 
+            Name = string.Empty;
+            Address = string.Empty;
+            Race = string.Empty;
+            Gender = string.Empty;
+            Birthdate = DateTime.MinValue;
+            Age = 0;
         }
 
         //ToString overload
         public override string ToString()
-        {//Might need to change MedicalNotes since I doubt it'll properly print. Might need to append w/ loop
-            string text = $"-*-*-*-*- PATIENT INFO -*-*-*-*-\n" +
-                $"Name: {Name}\n" +
-                $"Age: {Age}\n" +
-                $"Birthdate: {Birthdate}\n" +
-                $"Address: {Address}\n" +
-                $"Race: {Race}\n" +
-                $"Gender:{Gender}\n" +
-                $"Medical Notes:\n";
-            foreach (MedicalNote note in MedicalNotes)
-            {
-                text += $"\t{note}\n";
-            }
-            text += "-*-*-*-*--*-*-*-*--*-*-*-*--*-*-\n";//missing others
-            return text;
+        {
+            return Name;
         }
     }
     public class MedicalNote
