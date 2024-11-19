@@ -18,6 +18,10 @@
         {
             Shell.Current.GoToAsync("//AppointmentManagement");
         }
+        private void ManageInsurance_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("//InsuranceManagement");
+        }
 
     }
 
