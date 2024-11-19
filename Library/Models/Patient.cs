@@ -16,6 +16,7 @@ namespace Library.Models
         public int Age { get; set; }
         public int Id { get; set; }
         public List<MedicalNote> MedicalNotes { get; set; } = new List<MedicalNote>();
+        public Insurance? Insurance { get; set; }
 
         //Logic missing 
         public Patient()
