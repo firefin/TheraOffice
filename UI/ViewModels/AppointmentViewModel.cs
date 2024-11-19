@@ -72,7 +72,15 @@ namespace UI.ViewModels
             }
         }
 
-        public TimeSpan ScheduledTime { get; set; }
+        public TimeSpan ScheduledTime
+        {
+            get => Model?.Date.TimeOfDay ?? TimeSpan.Zero;
+            set
+            {
+                if(Model != null && Model.Date.TimeOfDay != value)
+                    Model.Date = Model.Date.Add(value);
+            }
+        }
 
         public int Id
         {
@@ -98,13 +106,38 @@ namespace UI.ViewModels
             Model = _model;
         }
 
+        private TimeSpan EarliestTime = new TimeSpan(8, 0, 0);
+        private TimeSpan LatestTime = new TimeSpan(17, 0, 0);
 
-        public void AddOrUpdate()
+        public string SchedulingErrorMessage;
+        public bool AddOrUpdate()
         {
-            if (Model != null)
+            if (Model != null) // if there's a model
             {
-                AppointmentServiceProxy.Current.AddOrUpdate(Model);
+                if(Model.Date.DayOfWeek != DayOfWeek.Saturday && Model.Date.DayOfWeek != DayOfWeek.Sunday) // if it's not the weekend
+                {
+                    if (Model.Date.TimeOfDay > EarliestTime && Model.Date.TimeOfDay < LatestTime) // if it's between 8a & 5p
+                    {
+                        AppointmentServiceProxy.Current.AddOrUpdate(Model);
+                        return true;
+                    }
+                    else
+                    {
+                        //inform user invalid time
+                        SchedulingErrorMessage = $"Error: The time must be between {EarliestTime} and {LatestTime}.";
+                    }
+                }
+                else
+                {
+                    //inform user invalid day
+                    SchedulingErrorMessage = "Error: The date must not be the weekend.";
+                }   
             }
+            else
+            {
+                SchedulingErrorMessage = "Error: No model.";
+            }
+            return false;
         }
 
         public void Refresh()
@@ -112,18 +145,16 @@ namespace UI.ViewModels
             //refresh the Patients & Physician list in thingy
             NotifyPropertyChanged(nameof(Patients));
             NotifyPropertyChanged(nameof(Physicians));
+            
         }
 
         public void RefreshTime()
         {
             if (Model != null)
             {
-                if (Model.Date != null)
-                {
-                    Model.Date = Date;
-                    //https://github.com/crmillsfsu/ClinicManagement/blob/master/App.Clinic/ViewModels/AppointmentViewModel.cs#L74
-                    Model.Date = Model.Date.Add(ScheduledTime);
-                }
+                var temp = Date.Date;
+                temp = temp.Date.Add(ScheduledTime);
+                Model.Date = temp;
             }
         }
     }

@@ -25,8 +25,9 @@ public partial class AppointmentManagement : ContentPage
     }
     private void DeleteAppointment_Clicked(object sender, EventArgs e)
     {
-        AppointmentServiceProxy.Current.RemoveAppointment(0);
-        
+        var apptId = (BindingContext as AppointmentManagementViewModel)?.SelectedAppointment?.Id ?? 0;
+        AppointmentServiceProxy.Current.RemoveAppointment(apptId);
+        (BindingContext as AppointmentManagementViewModel)?.Refresh();
     }
     private void AppointmentManagement_NavigatedTo(object sender, NavigatedToEventArgs e)
     {

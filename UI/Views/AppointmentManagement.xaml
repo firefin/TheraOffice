@@ -13,15 +13,17 @@
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.1*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.1*"/> <!-- ID -->
+                                <ColumnDefinition Width="*"/>    <!-- Patient -->
+                                <ColumnDefinition Width="*"/>    <!-- Physician -->
+                                <ColumnDefinition Width="*"/>    <!-- Date -->
+                                <ColumnDefinition Width="*"/>    <!-- Time -->
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Text="{Binding Id}"/>
                             <Label Grid.Column="1" Text="{Binding Model.Patient.Name}"/>
                             <Label Grid.Column="2" Text="{Binding Model.Physician.Name}"/>
                             <Label Grid.Column="3" Text="{Binding Model.Date}"/>
+                            <Label Grid.Column="4" Text="{Binding Model.Time}"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
