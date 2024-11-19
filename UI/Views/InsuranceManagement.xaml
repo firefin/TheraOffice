@@ -6,7 +6,7 @@
              NavigatedTo="InsuranceManagement_NavigatedTo">
     <VerticalStackLayout>
         <ListView
-            ItemsSource="{Binding InsuranceObservableCollection}"
+            ItemsSource="{Binding InsurancesObservableCollection}"
             SelectedItem="{Binding SelectedInsurance}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -30,5 +30,6 @@
         </ListView>
         <Button Text="Add Insurance" Clicked="AddInsurance_Clicked"/>
         <Button Text="Edit Insurance" Clicked="EditInsurance_Clicked"/>
+        <Button Text="Exit" Clicked="Exit_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

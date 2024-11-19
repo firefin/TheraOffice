@@ -13,7 +13,7 @@
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.25*"/>   <!--Buffer-->
+                                <ColumnDefinition Width="0.1*"/>    <!--Buffer-->
                                 <ColumnDefinition Width="0.5*"/>    <!--ID-->
                                 <ColumnDefinition Width="2*"/>      <!--Name-->
                             </Grid.ColumnDefinitions>                            
