@@ -31,8 +31,8 @@ namespace Library.Services
 
             Insurances = new List<Insurance>
             {
-                new Insurance{Name = "Test Insurance", Id = 1},
-                new Insurance{Name = "Other Test Insurance", Id = 2}
+                new Insurance{Name = "Test Insurance LLC.", Id = 1},
+                new Insurance{Name = "Other Test Insurance Co.", Id = 2}
             };
         }
 
