@@ -40,7 +40,7 @@ public partial class InsuranceView : ContentPage
 		}
 		if (decimal.TryParse(coverage, out decimal c))
 		{
-			bool? addSuccess = (BindingContext as Insurance)?.Coverages.TryAdd(name, c);
+			bool? addSuccess = (BindingContext as InsuranceViewModel)?.Coverages.TryAdd(name, c);
 			if(addSuccess != null)
 			{
 				if (addSuccess == false)

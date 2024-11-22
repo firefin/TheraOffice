@@ -44,13 +44,13 @@ namespace UI.ViewModels
                     model.Name = value;
             }
         }
-        public Dictionary<string,string> Coverages
+        public Dictionary<string,decimal> Coverages
         {
             get
             {
                 if (model == null)
-                    return new Dictionary<string, string>();
-                return model.Coverages.ToDictionary(k => k.Key, v => v.Value.ToString());
+                    return new Dictionary<string, decimal>();
+                return model.Coverages.ToDictionary(k => k.Key, v => v.Value);
             }
         }
 
