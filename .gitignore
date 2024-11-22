@@ -483,3 +483,8 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 /ProgramAssign1/ChristianDelpinPA1.zip
+
+
+
+# Custom files I do not want to add
+*.zip
