@@ -29,6 +29,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
         <Button Text="Add Insurance" Clicked="AddInsurance_Clicked"/>
         <Button Text="Edit Insurance" Clicked="EditInsurance_Clicked"/>
         <Button Text="Exit" Clicked="Exit_Clicked"/>

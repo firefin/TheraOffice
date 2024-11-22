@@ -43,4 +43,8 @@
         Title="Insurance Management"
         ContentTemplate="{DataTemplate views:InsuranceManagement}"
         Route="InsuranceManagement"/>
+    <ShellContent
+        Title="Insurance View"
+        ContentTemplate="{DataTemplate views:InsuranceView}"
+        Route="InsuranceView"/>
 </Shell>

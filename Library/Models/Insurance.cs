@@ -13,12 +13,12 @@ namespace Library.Models
 
         //Since using string, when setting the key, use .ToLower()
         //I know IRL, they use a standardized code, but fuck that shit lol.
-        public Dictionary<string, double> CoveredCost { get; set; }
+        public Dictionary<string, decimal> Coverages { get; set; }
      
         public Insurance() 
         {
             Name = string.Empty;
-            CoveredCost = new Dictionary<string, double>();
+            Coverages = new Dictionary<string, decimal>();
         }
     }
 }

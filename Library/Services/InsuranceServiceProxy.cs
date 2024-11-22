@@ -72,5 +72,13 @@ namespace Library.Services
                 Insurances.RemoveAt(Insurances.FindIndex(x => x.Id == id));
             }
         }
+        //might not be necessary? will leave for future.
+        public void AddCoverage(int insuranceID, string name, decimal coverage)
+        {             
+            if (Insurances.Any(x => x.Id == insuranceID))
+            {
+                Insurances.First(x => x.Id == insuranceID).Coverages.Add(name.ToLower(), coverage);
+            }
+        }
     }
 }

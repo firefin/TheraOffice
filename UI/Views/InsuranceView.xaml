@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Views.InsuranceView"
+             Title="InsuranceView">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="somethin"/>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding somethin}"/>
+        </Grid>
+        <Button Text="Confirm" Clicked="Confirm_Clicked"/>
+        <Button Text="Exit" Clicked="Exit_Clicked"/>
+
+        <Entry x:Name="ProcedureEntry" Placeholder="Enter procedure name" />
+        <Entry x:Name="CoverageEntry" Placeholder="Enter coverage" Keyboard="Numeric" />
+        <Button Text="Add Procedure" Clicked="AddProcedure_Clicked" />
+        <ListView x:Name="ProceduresList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Coverage}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
