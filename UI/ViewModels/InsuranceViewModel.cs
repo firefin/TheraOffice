@@ -52,6 +52,10 @@ namespace UI.ViewModels
                     return new Dictionary<string, decimal>();
                 return model.Coverages.ToDictionary(k => k.Key, v => v.Value);
             }
+            set
+            {
+                Coverages = value;
+            }
         }
 
         public InsuranceViewModel()

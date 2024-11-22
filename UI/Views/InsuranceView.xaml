@@ -30,7 +30,7 @@
         <ListView x:Name="ProceduresList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Coverage}" />
+                    <TextCell Text="{Binding Name}" Detail="{Binding Coverages}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

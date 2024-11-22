@@ -40,6 +40,7 @@ public partial class InsuranceView : ContentPage
 		}
 		if (decimal.TryParse(coverage, out decimal c))
 		{
+			// TryAdd() does not actually add to the dictionary?? no idea why even though it returns a true
 			bool? addSuccess = (BindingContext as InsuranceViewModel)?.Coverages.TryAdd(name, c);
 			if(addSuccess != null)
 			{
@@ -54,11 +55,7 @@ public partial class InsuranceView : ContentPage
 			}
 			else
 			{
-				//TODO: Theoretically, this is when an insurance is not created. So
-				//      maybe create a temporary Dictionary and add to that, then after 
-				//      confirming, add to the actual Dictionary
-				//      For now, just display an error.
-				DisplayAlert("Error", "An error occurred. (insurance may not exist yet)", "OK");
+				DisplayAlert("Error", "An error occurred.", "OK");
 				return;
 			}
 		}
