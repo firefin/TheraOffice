@@ -25,14 +25,22 @@ namespace Library.Services
 
         private static InsuranceServiceProxy? instance;
 
+
+        private Dictionary<string, decimal> testDictionary = new Dictionary<string, decimal>
+        {
+            {"blood test", 12.3m},
+            {"x-ray", 23.4m},
+            {"MRI", 45.6m}
+        };
+
         private InsuranceServiceProxy()
         {
             instance = null;
 
             Insurances = new List<Insurance>
             {
-                new Insurance{Name = "Test Insurance LLC.", Id = 1},
-                new Insurance{Name = "Other Test Insurance Co.", Id = 2}
+                new Insurance{Name = "Test Insurance LLC.", Id = 1, Coverages = testDictionary },
+                new Insurance{Name = "Other Test Insurance Co.", Id = 2, Coverages = testDictionary}
             };
         }
 

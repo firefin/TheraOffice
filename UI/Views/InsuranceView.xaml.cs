@@ -31,39 +31,52 @@ public partial class InsuranceView : ContentPage
 		string name = ProcedureEntry.Text;
 		string coverage = CoverageEntry.Text;
 
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(coverage))
+        {
+            DisplayAlert("Error", "Please enter a name and coverage.", "OK");
+            return;
+        }
 
-		//TODO: Move all this to the InsuranceServiceProxy (or InsuranceViewModel?)
-		if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(coverage))
-		{
-			DisplayAlert("Error", "Please enter a name and coverage.", "OK");
-			return;
-		}
 		if (decimal.TryParse(coverage, out decimal c))
 		{
-			// TryAdd() does not actually add to the dictionary?? no idea why even though it returns a true
-			bool? addSuccess = (BindingContext as InsuranceViewModel)?.Coverages.TryAdd(name, c);
-			if(addSuccess != null)
+			bool? tryAdd = (BindingContext as InsuranceViewModel)?.TryAddCoverage(name, c);
+
+			if (tryAdd != null)
 			{
-				if (addSuccess == false)
+				if (tryAdd == true)
+				{
+					//DisplayAlert("Success", "Information added.", "OK");
+					ProcedureEntry.Text = string.Empty;
+					CoverageEntry.Text = string.Empty;
+					(BindingContext as InsuranceViewModel)?.Refresh();
+				}
+				else
 				{
 					DisplayAlert("Error", "Procedure already exists.", "OK");
-					return;
 				}
-				ProcedureEntry.Text = string.Empty;
-				CoverageEntry.Text = string.Empty;
-				DisplayAlert("Success", "Information added.", "OK");
 			}
 			else
 			{
 				DisplayAlert("Error", "An error occurred.", "OK");
-				return;
 			}
 		}
-		else
+    }
+
+	private void RemoveProcedure_Clicked(object sender, EventArgs e)
+	{
+		var binding = (BindingContext as InsuranceViewModel);
+        if (binding != null && binding?.CoveragesObservableCollection.Count > 0)
 		{
-			DisplayAlert("Error", "Coverage must be a number.", "OK");
-		}
-	}
+			var success = binding?.TryRemoveCoverage(binding.SelectedCoverage.Key);
+            if (success == false)
+            {
+				DisplayAlert("Error", "Unable to remove.", "OK");
+				return;
+            }
+            binding?.Refresh();
+        }
+    }
+
 
 	private void InsuranceView_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{

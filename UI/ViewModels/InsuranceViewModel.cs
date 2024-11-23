@@ -2,6 +2,7 @@
 using Library.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -58,6 +59,13 @@ namespace UI.ViewModels
             }
         }
 
+        public ObservableCollection<KeyValuePair<string, decimal>> CoveragesObservableCollection
+        {
+            get => new ObservableCollection<KeyValuePair<string, decimal>>(Coverages);
+        }
+        public KeyValuePair<string, decimal> SelectedCoverage { get; set; }
+
+
         public InsuranceViewModel()
         {
             model = new Insurance();
@@ -80,7 +88,23 @@ namespace UI.ViewModels
 
         public void Refresh()
         {
-            NotifyPropertyChanged(nameof(Coverages));
+            NotifyPropertyChanged(nameof(CoveragesObservableCollection));
         }
+
+        public bool? TryAddCoverage(string name, decimal coverage)
+        {
+            if (model == null || name == null)
+                return false;
+            return model.Coverages.TryAdd(name.ToLower(), coverage);
+        }
+
+        public bool? TryRemoveCoverage(string name)
+        {
+            if (model == null || name == null)
+                return false;
+            return model.Coverages.Remove(name.ToLower());
+        }
+
+        
     }
 }

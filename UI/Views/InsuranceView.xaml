@@ -27,12 +27,34 @@
         <Entry x:Name="ProcedureEntry" Placeholder="Enter procedure name" />
         <Entry x:Name="CoverageEntry" Placeholder="Enter coverage" Keyboard="Numeric" />
         <Button Text="Add Procedure" Clicked="AddProcedure_Clicked" />
-        <ListView x:Name="ProceduresList">
-            <ListView.ItemTemplate>
+        <Button Text="Remove Selected Procedure" Clicked="RemoveProcedure_Clicked" />
+        <CollectionView ItemsSource="{Binding CoveragesObservableCollection}" SelectionMode="Single" SelectedItem="{Binding SelectedCoverage}">
+            <CollectionView.Header>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Header Labels -->
+                    <Label Grid.Column="0" Text="Procedure" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Grid.Column="1" Text="Coverage" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center"/>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Coverages}" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Data Labels -->
+                        <Label Grid.Column="0" Text="{Binding Key}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Value}" HorizontalOptions="End" VerticalOptions="Center"/>
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
     </VerticalStackLayout>
 </ContentPage>

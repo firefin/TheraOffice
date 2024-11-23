@@ -53,9 +53,6 @@ namespace UI.ViewModels
             }
         }
 
-        /*
-         * deep copy on appointment (using new keyword) 
-         */
 
         public DateTime MinDate
         {
@@ -109,7 +106,7 @@ namespace UI.ViewModels
         private TimeSpan EarliestTime = new TimeSpan(8, 0, 0);
         private TimeSpan LatestTime = new TimeSpan(17, 0, 0);
 
-        public string SchedulingErrorMessage;
+        public string SchedulingErrorMessage = string.Empty;
         public bool AddOrUpdate()
         {
             if (Model != null) // if there's a model
