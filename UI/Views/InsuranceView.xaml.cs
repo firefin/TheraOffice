@@ -21,9 +21,9 @@ public partial class InsuranceView : ContentPage
 	private void Confirm_Clicked(object sender, EventArgs e)
 	{
 		if((BindingContext as InsuranceViewModel)?.AddOrUpdate() ?? false)
-            Shell.Current.GoToAsync("//InsuranceManagement");
-        else
-            (BindingContext as InsuranceViewModel)?.Refresh();
+			Shell.Current.GoToAsync("//InsuranceManagement");
+		else
+			(BindingContext as InsuranceViewModel)?.Refresh();
 	}
 
 	private void AddProcedure_Clicked(object sender, EventArgs e)
@@ -31,11 +31,11 @@ public partial class InsuranceView : ContentPage
 		string name = ProcedureEntry.Text;
 		string coverage = CoverageEntry.Text;
 
-        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(coverage))
-        {
-            DisplayAlert("Error", "Please enter a name and coverage.", "OK");
-            return;
-        }
+		if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(coverage))
+		{
+			DisplayAlert("Error", "Please enter a name and coverage.", "OK");
+			return;
+		}
 
 		if (decimal.TryParse(coverage, out decimal c))
 		{
@@ -45,7 +45,6 @@ public partial class InsuranceView : ContentPage
 			{
 				if (tryAdd == true)
 				{
-					//DisplayAlert("Success", "Information added.", "OK");
 					ProcedureEntry.Text = string.Empty;
 					CoverageEntry.Text = string.Empty;
 					(BindingContext as InsuranceViewModel)?.Refresh();
@@ -60,22 +59,24 @@ public partial class InsuranceView : ContentPage
 				DisplayAlert("Error", "An error occurred.", "OK");
 			}
 		}
-    }
+	}
 
 	private void RemoveProcedure_Clicked(object sender, EventArgs e)
 	{
-		var binding = (BindingContext as InsuranceViewModel);
-        if (binding != null && binding?.CoveragesObservableCollection.Count > 0)
+		//necessary to access binding.SelectedCoverage.Key
+		var binding = BindingContext as InsuranceViewModel;
+
+		if (binding != null && binding?.CoveragesObservableCollection.Count > 0)
 		{
 			var success = binding?.TryRemoveCoverage(binding.SelectedCoverage.Key);
-            if (success == false)
-            {
+			if (success == false)
+			{
 				DisplayAlert("Error", "Unable to remove.", "OK");
 				return;
-            }
-            binding?.Refresh();
-        }
-    }
+			}
+			binding?.Refresh();
+		}
+	}
 
 
 	private void InsuranceView_NavigatedTo(object sender, NavigatedToEventArgs e)
@@ -85,6 +86,11 @@ public partial class InsuranceView : ContentPage
 			BindingContext = InsuranceServiceProxy.Current.Insurances.FirstOrDefault(p => p.Id == InsuranceId);
 		else
 			BindingContext = new Insurance();
+
+	}
+
+	private void EditProcedure_Clicked(object sender, EventArgs e)
+	{
 
 	}
 }

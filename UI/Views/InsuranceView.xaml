@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UI.Views.InsuranceView"
-             Title="InsuranceView">
-    <VerticalStackLayout>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
-            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="UI.Views.InsuranceView"
+			 Title="InsuranceView">
+	<VerticalStackLayout>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
+			<Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Text="somethin"/>
-            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding somethin}"/>
-        </Grid>
-        <Button Text="Confirm" Clicked="Confirm_Clicked"/>
-        <Button Text="Exit" Clicked="Exit_Clicked"/>
+			<Label Grid.Row="1" Grid.Column="0" Text="somethin"/>
+			<Entry Grid.Row="1" Grid.Column="1" Text="{Binding somethin}"/>
+		</Grid>
+		<Button Text="Confirm" Clicked="Confirm_Clicked"/>
+		<Button Text="Exit" Clicked="Exit_Clicked"/>
 
-        <Entry x:Name="ProcedureEntry" Placeholder="Enter procedure name" />
-        <Entry x:Name="CoverageEntry" Placeholder="Enter coverage" Keyboard="Numeric" />
-        <Button Text="Add Procedure" Clicked="AddProcedure_Clicked" />
-        <Button Text="Remove Selected Procedure" Clicked="RemoveProcedure_Clicked" />
-        <CollectionView ItemsSource="{Binding CoveragesObservableCollection}" SelectionMode="Single" SelectedItem="{Binding SelectedCoverage}">
-            <CollectionView.Header>
-                <Grid Padding="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <!-- Header Labels -->
-                    <Label Grid.Column="0" Text="Procedure" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
-                    <Label Grid.Column="1" Text="Coverage" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center"/>
-                </Grid>
-            </CollectionView.Header>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <!-- Data Labels -->
-                        <Label Grid.Column="0" Text="{Binding Key}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Value}" HorizontalOptions="End" VerticalOptions="Center"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+		<Entry x:Name="ProcedureEntry" Placeholder="Enter procedure name" />
+		<Entry x:Name="CoverageEntry" Placeholder="Enter coverage" Keyboard="Numeric" />
+		<Button Text="Add Procedure" Clicked="AddProcedure_Clicked" />
+		<Button Text="Edit Selected Procedure" Clicked="EditProcedure_Clicked"/>
+		<Button Text="Remove Selected Procedure" Clicked="RemoveProcedure_Clicked" />
+		<CollectionView ItemsSource="{Binding CoveragesObservableCollection}" SelectionMode="Single" SelectedItem="{Binding SelectedCoverage}">
+			<CollectionView.Header>
+				<Grid Padding="10">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<!-- Header Labels -->
+					<Label Grid.Column="0" Text="Procedure" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+					<Label Grid.Column="1" Text="Coverage" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center"/>
+				</Grid>
+			</CollectionView.Header>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Grid Padding="10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<!-- Data Labels -->
+						<Label Grid.Column="0" Text="{Binding Key}" HorizontalOptions="Start" VerticalOptions="Center"/>
+						<Label Grid.Column="1" Text="{Binding Value}" HorizontalOptions="End" VerticalOptions="Center"/>
+					</Grid>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
 
 
-    </VerticalStackLayout>
+	</VerticalStackLayout>
 </ContentPage>
