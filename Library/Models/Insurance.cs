@@ -20,5 +20,10 @@ namespace Library.Models
             Name = string.Empty;
             Coverages = new Dictionary<string, decimal>();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
