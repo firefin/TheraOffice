@@ -1,6 +1,8 @@
 ﻿using Library.Models;
+using Library.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +17,13 @@ namespace UI.ViewModels
         {
             get
             {
-                if(model == null)
+                if (model == null)
                     return -1;
                 return model.Id;
             }
             set
             {
-                if(model != null && model.Id != value)
+                if (model != null && model.Id != value)
                     model.Id = value;
             }
         }
@@ -32,7 +34,7 @@ namespace UI.ViewModels
 
             set
             {
-                if(model != null)
+                if (model != null)
                     model.Name = value;
             }
         }
@@ -47,5 +49,14 @@ namespace UI.ViewModels
             model = _model;
         }
 
+        public ObservableCollection<Insurance> Insurances
+        {
+            get
+            {
+                if (model == null)
+                    return new ObservableCollection<Insurance>();
+                return new ObservableCollection<Insurance>(InsuranceServiceProxy.Current.Insurances);
+            }
+        }
     }
 }

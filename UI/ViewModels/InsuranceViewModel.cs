@@ -104,7 +104,11 @@ namespace UI.ViewModels
                 return false;
             return model.Coverages.Remove(name.ToLower());
         }
+        public override string ToString()
+        {
+            return model?.ToString() ?? "Loading Error.";
+        }
 
-        
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,21 @@ namespace Library.Models
         public int Age { get; set; }
         public int Id { get; set; }
         public List<MedicalNote> MedicalNotes { get; set; } = new List<MedicalNote>();
-        public Insurance? Insurance { get; set; }
+        public Insurance? Insurance 
+        { 
+            get
+            {
+                if(insuranceId == -1)
+                    return null;
+               return InsuranceServiceProxy.Current.Insurances.FirstOrDefault(i => i.Id == insuranceId);
+            }
+            
+            set
+            {
+                insuranceId = value?.Id ?? -1;
+            }
+        }
+        private int insuranceId { get; set; }
 
         //Logic missing 
         public Patient()
